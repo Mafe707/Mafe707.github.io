@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portafolio Personal - Mafe</title>
+  <style>
+    /* Color Palette */
+    :root {
+      --blue-dark: #0a2540;
+      --blue-mid: #4a81b8;
+      --blue-light: #4a90e2;
+      --blue-vivid: #335b97; /* more intense vivid blue */
+      --black: #121212;
+      --white: #ffffff;
+      --gray-light: #f5f7fa;
+    }
+
+    /* Reset and base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--gray-light);
+      color: var(--blue-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--blue-light);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--blue-mid);
+    }
+
+    /* Header */
+    header {
+      background: var(--blue-dark);
+      color: var(--white);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--white);
+      user-select: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 8px 5px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      border-bottom: 2px solid var(--blue-light);
+      color: var(--blue-light);
+    }
+
+    main {
+      padding-top: 100px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 4rem;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.1);
+      margin-bottom: 3rem;
+    }
+
+    h1, h2 {
+      color: var(--blue-dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--blue-dark);
+    }
+
+    /* Home Section */
+    #inicio {
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    #inicio h1 {
+      font-size: 2.5rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #inicio p {
+      font-size: 1.2rem;
+      color: var(--blue-mid);
+    }
+
+    /* Profile Photo */
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid var(--blue-vivid);
+      box-shadow: 0 4px 10px rgba(0,102,255,0.5);
+      margin: 0 auto;
+      display: block;
+      user-select: none;
+    }
+
+    /* Projects Section */
+    #proyectos ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    #proyectos ul li {
+      margin-bottom: 0.7rem;
+    }
+
+    /* Academic Experience Section */
+    .exp-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-title {
+      font-weight: 700;
+      color: var(--blue-mid);
+      font-size: 1.1rem;
+    }
+
+    .exp-subtitle {
+      font-style: italic;
+      color: var(--blue-light);
+      margin-bottom: 0.3rem;
+    }
+
+    /* Personal Experience Section */
+    #experiencia-personal {
+      line-height: 1.5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--blue-dark);
+      color: var(--white);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+      }
+
+      main {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">Mi Portafolio</div>
+      <nav>
+        <ul>
+          <li><a href="#inicio" class="active">Inicio</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#experiencia-academica">Experiencia Académica</a></li>
+          <li><a href="#experiencia-personal">Experiencia Personal</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <img class="profile-photo" src="" alt="Foto de perfil de la desarrolladora" />
+      <h1>Hola, soy Desarrolladora</h1>
+      <p>Bienvenida a mi portafolio personal donde comparto mis proyectos y experiencia.</p>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+      <ul>
+        <li>Proyecto 1 - Descripción corta del proyecto y tecnologías usadas.</li>
+        <li>Proyecto 2 - Descripción corta del proyecto y tecnologías usadas.</li>
+        <li>Proyecto 3 - Descripción corta del proyecto y tecnologías usadas.</li>
+      </ul>
+    </section>
+
+    <section id="experiencia-academica">
+      <h2>Experiencia Académica</h2>
+      <div class="exp-item">
+        <div class="exp-title">Grado en Ingeniería en Sistemas</div>
+        <div class="exp-subtitle">Universidad XYZ - 2018 - 2022</div>
+        <p>Descripción breve de los estudios, logros académicos, y cursos relevantes.</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-title">Curso de Desarrollo Web Full Stack</div>
+        <div class="exp-subtitle">Plataforma ABC - 2023</div>
+        <p>Aprendizaje de tecnologías como HTML, CSS, JavaScript, Node.js y bases de datos.</p>
+      </div>
+    </section>
+
+    <section id="experiencia-personal">
+      <h2>Experiencia Personal</h2>
+      <p>He trabajado en proyectos personales enfocados en desarrollo web y aplicaciones móviles, destacando la implementación de diseños responsivos y optimización del rendimiento. Me apasiona aprender nuevas tecnologías y contribuir en proyectos colaborativos.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Mi Portafolio Personal. Todos los derechos reservados.
+  </footer>
+</body>
+</html>
+
+```
