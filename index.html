@@ -1,263 +1,325 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portafolio Personal - Mafe</title>
-  <style>
-    /* Color Palette */
-    :root {
-      --blue-dark: #0a2540;
-      --blue-mid: #4a81b8;
-      --blue-light: #4a90e2;
-      --blue-vivid: #335b97; /* more intense vivid blue */
-      --black: #121212;
-      --white: #ffffff;
-      --gray-light: #f5f7fa;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio | Mafe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        :root {
+            --primary-light: #e0f2e0;
+            --primary-medium: #b0c9b0;
+            --primary-dark: #334d33;
+            --accent: #5a8f5a;
+        }
 
-    /* Reset and base */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f8e5;
+            color: var(--primary-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--gray-light);
-      color: var(--blue-dark);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
+        header {
+            background-color: var(--primary-medium);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    a {
-      color: var(--blue-light);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+        }
 
-    a:hover {
-      color: var(--blue-mid);
-    }
+        h1 {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
 
-    /* Header */
-    header {
-      background: var(--blue-dark);
-      color: var(--white);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
+        .tagline {
+            color: var(--primary-dark);
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: var(--white);
-      user-select: none;
-    }
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+        }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
+        .nav-links li {
+            margin: 0 1.5rem;
+        }
 
-    nav ul li a {
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 8px 5px;
-      border-bottom: 2px solid transparent;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: bold;
+            padding: 0.5rem 0;
+            position: relative;
+        }
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      border-bottom: 2px solid var(--blue-light);
-      color: var(--blue-light);
-    }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-    main {
-      padding-top: 100px;
-      max-width: 900px;
-      margin: 0 auto;
-      padding-bottom: 4rem;
-    }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
 
-    section {
-      padding: 3rem 1rem;
-      background: var(--white);
-      border-radius: 8px;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.1);
-      margin-bottom: 3rem;
-    }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
-    h1, h2 {
-      color: var(--blue-dark);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
+        .content {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
 
-    p {
-      margin-bottom: 1rem;
-      color: var(--blue-dark);
-    }
+        .section {
+            background-color: var(--primary-light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
 
-    /* Home Section */
-    #inicio {
-      text-align: center;
-      padding-top: 2rem;
-    }
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
 
-    #inicio h1 {
-      font-size: 2.5rem;
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
 
-    #inicio p {
-      font-size: 1.2rem;
-      color: var(--blue-mid);
-    }
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
 
-    /* Profile Photo */
-    .profile-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid var(--blue-vivid);
-      box-shadow: 0 4px 10px rgba(0,102,255,0.5);
-      margin: 0 auto;
-      display: block;
-      user-select: none;
-    }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
 
-    /* Projects Section */
-    #proyectos ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
-    }
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
 
-    #proyectos ul li {
-      margin-bottom: 0.7rem;
-    }
+        .project-info {
+            padding: 1.5rem;
+        }
 
-    /* Academic Experience Section */
-    .exp-item {
-      margin-bottom: 1.5rem;
-    }
+        .project-title {
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
 
-    .exp-title {
-      font-weight: 700;
-      color: var(--blue-mid);
-      font-size: 1.1rem;
-    }
+        .project-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
 
-    .exp-subtitle {
-      font-style: italic;
-      color: var(--blue-light);
-      margin-bottom: 0.3rem;
-    }
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
 
-    /* Personal Experience Section */
-    #experiencia-personal {
-      line-height: 1.5;
-    }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--accent);
+        }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: var(--blue-dark);
-      color: var(--white);
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      font-size: 0.9rem;
-      user-select: none;
-    }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
 
-    @media (max-width: 600px) {
-      nav ul {
-        gap: 1rem;
-      }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -2rem;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: white;
+            border: 3px solid var(--accent);
+        }
 
-      main {
-        padding: 1.5rem;
-      }
-    }
-  </style>
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill {
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        footer {
+            background-color: var(--primary-medium);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-dark);
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">Mi Portafolio</div>
-      <nav>
-        <ul>
-          <li><a href="#inicio" class="active">Inicio</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-          <li><a href="#experiencia-academica">Experiencia Académica</a></li>
-          <li><a href="#experiencia-personal">Experiencia Personal</a></li>
+    <header>
+        <img src="https://via.placeholder.com/150" alt="Tu foto" class="profile-img" />
+        <h1>[Tu Nombre]</h1>
+        <p class="tagline">Desarrolladora Web/p>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="#proyectos"><i class="fas fa-code"></i> Proyectos</a></li>
+            <li><a href="#experiencia"><i class="fas fa-briefcase"></i> Experiencia</a></li>
+            <li><a href="#habilidades"><i class="fas fa-cogs"></i> Habilidades</a></li>
+            <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
         </ul>
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <main>
-    <section id="inicio">
-      <img class="profile-photo" src="" alt="Foto de perfil de la desarrolladora" />
-      <h1>Hola, soy Desarrolladora</h1>
-      <p>Bienvenida a mi portafolio personal donde comparto mis proyectos y experiencia.</p>
-    </section>
+    <main class="content">
+        <section id="inicio" class="section">
+            <h2>Sobre Mí</h2>
+            <p>¡Hola! Soy Mafe, desarrolladora web con pasión por crear soluciones digitales eficientes y atractivas. Mi enfoque combina funcionalidad técnica con diseño intuitivo.</p>
+            <p>Disfruto trabajar en proyectos que desafíen mi creatividad y habilidades técnicas.</p>
 
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <ul>
-        <li>Proyecto 1 - Descripción corta del proyecto y tecnologías usadas.</li>
-        <li>Proyecto 2 - Descripción corta del proyecto y tecnologías usadas.</li>
-        <li>Proyecto 3 - Descripción corta del proyecto y tecnologías usadas.</li>
-      </ul>
-    </section>
+            <h3>Mis habilidades principales:</h3>
+            <div class="skills-container" id="habilidades">
+                <span class="skill">HTML/CSS</span>
+                <span class="skill">JavaScript</span>
+                <span class="skill">React</span>
+                <span class="skill">Node.js</span>
+                <span class="skill">Diseño Responsivo</span>
+            </div>
+        </section>
 
-    <section id="experiencia-academica">
-      <h2>Experiencia Académica</h2>
-      <div class="exp-item">
-        <div class="exp-title">Grado en Ingeniería en Sistemas</div>
-        <div class="exp-subtitle">Universidad XYZ - 2018 - 2022</div>
-        <p>Descripción breve de los estudios, logros académicos, y cursos relevantes.</p>
-      </div>
-      <div class="exp-item">
-        <div class="exp-title">Curso de Desarrollo Web Full Stack</div>
-        <div class="exp-subtitle">Plataforma ABC - 2023</div>
-        <p>Aprendizaje de tecnologías como HTML, CSS, JavaScript, Node.js y bases de datos.</p>
-      </div>
-    </section>
+        <section id="proyectos" class="section">
+            <h2>Proyectos Recientes</h2>
+            <div class="projects-grid">
+            </div>
+        </section>
 
-    <section id="experiencia-personal">
-      <h2>Experiencia Personal</h2>
-      <p>He trabajado en proyectos personales enfocados en desarrollo web y aplicaciones móviles, destacando la implementación de diseños responsivos y optimización del rendimiento. Me apasiona aprender nuevas tecnologías y contribuir en proyectos colaborativos.</p>
-    </section>
-  </main>
+        <section id="experiencia" class="section">
+            <h2>Experiencia Profesional</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - Presente</div>
+                    <h3>Estudiante 5 semestre</h3>
+                    <p>Desarrollo de interfaces de usuario.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2025</div>
+                    <h3>Estudiante de Ingenieria de Sistemas</h3>
+                </div>
+            </div>
 
-  <footer>
-    &copy; 2024 Mi Portafolio Personal. Todos los derechos reservados.
-  </footer>
+            <h2 style="margin-top: 2rem;">Educación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2022</div>
+                    <h3>Estudios Secundaria</h3>
+                    <p>Tecnico en audiovisuales</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section">
+            <h2>Contacto</h2>
+            <p>Contáctame a través de:</p>
+            <p><i class="fas fa-envelope"></i> <a href="mafe@ejemplo.com" style="color: var(--accent);">mafe@ejemplo.com</a></p>
+            <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p>© 2025 Mafe. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
-
-```
